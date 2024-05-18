@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://soq0t65fde7e"]
+[gd_scene load_steps=8 format=3 uid="uid://soq0t65fde7e"]
 
 [ext_resource type="Texture2D" uid="uid://8fopyw1m0he2" path="res://icon.svg" id="1_tlww2"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="2_l2key"]
+[ext_resource type="PackedScene" uid="uid://bt2owe5s68y2t" path="res://dialogue/dialogue_area.tscn" id="3_48srp"]
+[ext_resource type="PackedScene" uid="uid://bkbtvt0ecv3xk" path="res://dialogue/dialogue_player.tscn" id="4_ll7tv"]
+[ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="5_iuvgg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2cl1"]
 size = Vector2(354, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17hfq"]
+size = Vector2(26, 38)
 
 [node name="World" type="Node2D"]
 
@@ -40,7 +46,7 @@ scale = Vector2(2.77344, 0.0546875)
 texture = ExtResource("1_tlww2")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(105, -58)
+position = Vector2(504, -192)
 rotation = 1.5708
 collision_layer = 3
 collision_mask = 3
@@ -53,3 +59,18 @@ shape = SubResource("RectangleShape2D_g2cl1")
 position = Vector2(0.499977, 7.5)
 scale = Vector2(2.77344, 0.0546875)
 texture = ExtResource("1_tlww2")
+
+[node name="DialogueArea" parent="." instance=ExtResource("3_48srp")]
+dialogue_key = "chicken nugget"
+
+[node name="CollisionShape2D" parent="DialogueArea" index="0"]
+position = Vector2(-144, -16)
+shape = SubResource("RectangleShape2D_17hfq")
+
+[node name="DialoguePlayer" parent="." instance=ExtResource("4_ll7tv")]
+scene_text_file = "res://dialogue/dialogueJSONs/world_dialogue.json"
+
+[node name="TileMap" parent="." instance=ExtResource("5_iuvgg")]
+layer_0/tile_data = PackedInt32Array(-8, 589824, 10, -7, 655360, 10, -6, 720896, 10, -5, 786432, 10, -4, 851968, 10, -3, 589824, 10, -2, 655360, 10, -1, 720896, 10, -65536, 786432, 10, -65535, 851968, 10, -65534, 917504, 10, -65533, 983040, 10, -65532, 1048576, 10, -65531, 589824, 10, -65530, 655360, 10, -65529, 720896, 10, -65528, 786432, 10, -65527, 851968, 10, -65526, 917504, 10, -65525, 983040, 10, -65524, 589824, 10, -65523, 655360, 10, -65522, 720896, 10, -65521, 786432, 10, -65520, 851968, 10, -65519, 917504, 10, -65518, 983040, 10, -65517, 1048576, 10, -65516, 1114112, 10, -65515, 589824, 10, -65514, 655360, 10, -65513, 720896, 10, -65512, 786432, 10, -65511, 851968, 10, -65510, 917504, 10, -65509, 983040, 10, -65508, 1048576, 10, -65507, 1114112, 10, -262114, 589824, 0, -196578, 589824, 1, -131042, 589824, 2, -65506, 589824, 3, -524258, 589824, 3, -458722, 589824, 1, -393186, 589824, 2, -327650, 589824, 3, -720866, 589824, 3, -655330, 589824, 1, -589794, 589824, 2, -917474, 589824, 3, -851938, 589824, 1, -786402, 589824, 2, -1114082, 589824, 2, -1048546, 589824, 3, -983010, 589824, 2, -1245154, 589824, 0, -1179618, 589824, 1)
+
+[editable path="DialogueArea"]

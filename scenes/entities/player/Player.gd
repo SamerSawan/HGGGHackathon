@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 
-
+@onready var standy_sprite = $Sprite2D
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 #player input
+var horizontal_direction: float = 0
+var vertical_direction: float = 0
 var movement_input = Vector2.ZERO
 var jump_input = false
 var jump_input_actuation = false
@@ -17,6 +19,7 @@ var dash_input = false
 #player movement
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+const DRAG = 2000
 var last_direction = Vector2.RIGHT
 
 #mechanic
@@ -29,6 +32,7 @@ var prev_state = null
 #nodes
 @onready var STATES = $STATES
 @onready var RAYCASTS = $Raycasts
+@onready var animation_tree = $AnimationTree
 
 
 func _ready():
@@ -38,6 +42,9 @@ func _ready():
 	
 	prev_state = STATES.IDLE 
 	current_state = STATES.IDLE
+	
+func _process(delta):
+	animation_handler()
 	
 
 func _physics_process(delta):
@@ -68,29 +75,39 @@ func get_next_to_wall():
 				return Vector2.LEFT
 	return null
 
-
-
+func animation_handler():
+	if horizontal_direction != 0: #turning
+		standy_sprite.flip_h = (horizontal_direction == 1)
+	if (velocity.x != 0 && is_on_floor()):
+		animation_tree["parameters/conditions/is_idle"] = false
+		animation_tree["parameters/conditions/is_running"] = true
+	if is_on_floor() && velocity.x == 0:
+		animation_tree["parameters/conditions/is_idle"] = true
+		animation_tree["parameters/conditions/is_running"] = false
+		
 func player_input():
-	movement_input = Vector2.ZERO
-	if Input.is_action_pressed("MoveRight"):
-		movement_input.x += 1
-	if Input.is_action_pressed("MoveLeft"):
-		movement_input.x -= 1
-	if Input.is_action_pressed("MoveUp"):
-		movement_input.y -= 1
-	if Input.is_action_pressed("MoveDown"):
-		movement_input.y += 1
+	horizontal_direction = Input.get_axis("MoveLeft", "MoveRight") #returns -1 if first arg is pressed, else 1
+	vertical_direction = Input.get_axis("MoveDown", "MoveUp")
+	movement_input = Vector2(horizontal_direction, vertical_direction)
+#	if Input.is_action_pressed("MoveRight"):
+#		movement_input.x += 1
+#	if Input.is_action_pressed("MoveLeft"):
+#		movement_input.x -= 1
+#	if Input.is_action_pressed("MoveUp"):
+#		movement_input.y -= 1
+#	if Input.is_action_pressed("MoveDown"):
+#		movement_input.y += 1
 	
 	# jumps
-	if Input.is_action_pressed("Jump"):
-		jump_input = true
-	else: 
-		jump_input = false
+#	if Input.is_action_pressed("Jump"): #not doing anything? doesnt change if commented out
+#		jump_input = true
+#	else: 
+#		jump_input = false
 	if Input.is_action_just_pressed("Jump"):
 		jump_input_actuation = true
 	else: 
 		jump_input_actuation = false
-	
+
 	#climb
 	if Input.is_action_pressed("Climb"):
 		climb_input = true

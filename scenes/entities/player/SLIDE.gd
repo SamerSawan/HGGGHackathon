@@ -24,7 +24,7 @@ func slide_movement(delta):
 		else:
 			Player.velocity.y = 0
 	else:
-		player_movement()
+		player_movement(delta)
 		Player.gravity(delta)
 		
 		Player.velocity.y *= slide_friction
