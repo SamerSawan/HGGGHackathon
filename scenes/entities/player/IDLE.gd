@@ -1,5 +1,6 @@
 extends "state.gd"
 
+
 func update(delta):
 	Player.gravity(delta)
 	if Player.movement_input.x != 0:
@@ -8,10 +9,8 @@ func update(delta):
 		return STATES.JUMP
 	if Player.velocity.y >0:
 		return STATES.FALL
-	
+	if Player.dash_input and Player.can_dash:
+		return STATES.DASH
 	return null
-
 func enter_state():
-	pass
-
-
+	Player.can_dash = true

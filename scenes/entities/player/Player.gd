@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -15,8 +14,15 @@ var climb_input = false
 var dash_input = false
 
 
+#player movement
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+var last_direction = Vector2.RIGHT
 
 
+var can_dash = true
+
+#states
 var current_state = null
 var prev_state = null
 
@@ -61,12 +67,11 @@ func player_input():
 	if Input.is_action_pressed("MoveDown"):
 		movement_input.y += 1
 	
-	#jumps
+	# jumps
 	if Input.is_action_pressed("Jump"):
 		jump_input = true
 	else: 
 		jump_input = false
-
 	if Input.is_action_just_pressed("Jump"):
 		jump_input_actuation = true
 	else: 
@@ -79,8 +84,8 @@ func player_input():
 		climb_input = false
 	
 	#dash
-	if Input.is_action_pressed("Dash"):
+	if Input.is_action_just_pressed("Dash"):
 		dash_input = true
-	else:
-		climb_input = false
+	else: 
+		dash_input = false
 	

@@ -4,6 +4,7 @@ extends Node
 @onready var IDLE = $IDLE
 @onready var MOVE = $MOVE
 @onready var JUMP = $JUMP
+@onready var DASH = $DASH
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
