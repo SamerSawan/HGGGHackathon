@@ -8,4 +8,6 @@ func update(delta):
 		return STATES.IDLE
 	if Player.dash_input and Player.can_dash:
 		return STATES.DASH
+	if Player.get_next_to_wall() != null:
+		return STATES.SLIDE
 	return null

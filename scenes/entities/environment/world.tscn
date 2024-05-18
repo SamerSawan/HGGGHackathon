@@ -9,6 +9,8 @@ size = Vector2(354, 7)
 [node name="World" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 7)
@@ -21,3 +23,33 @@ texture = ExtResource("1_tlww2")
 
 [node name="Player" parent="." instance=ExtResource("2_l2key")]
 position = Vector2(0, -73)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-159, -151)
+rotation = 1.5708
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_g2cl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(0.499977, 7.5)
+scale = Vector2(2.77344, 0.0546875)
+texture = ExtResource("1_tlww2")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(105, -58)
+rotation = 1.5708
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_g2cl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(0.499977, 7.5)
+scale = Vector2(2.77344, 0.0546875)
+texture = ExtResource("1_tlww2")

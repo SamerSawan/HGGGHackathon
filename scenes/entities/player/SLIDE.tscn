@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://db2qsmecwrg3x"]
+
+[ext_resource type="Script" path="res://scenes/entities/player/SLIDE.gd" id="1_qgew5"]
+
+[node name="SLIDE" type="Node"]
+script = ExtResource("1_qgew5")
