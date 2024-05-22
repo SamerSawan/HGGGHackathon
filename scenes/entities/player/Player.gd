@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 
 @onready var standy_sprite = $Sprite2D
+@onready var anim_player = $AnimationPlayer
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 
 #player input
 var horizontal_direction: float = 0
@@ -17,10 +17,11 @@ var dash_input = false
 
 
 #player movement
-const SPEED = 300.0
+const SPEED = 250.0
 const JUMP_VELOCITY = -400.0
 const DRAG = 2000
 var last_direction = Vector2.RIGHT
+var climbs: int = 2
 
 #mechanic
 var can_dash = true
@@ -120,3 +121,9 @@ func player_input():
 	else: 
 		dash_input = false
 	
+func respawn_anim():
+	animation_tree["parameters/conditions/is_respawning"] = true
+	await get_tree().create_timer(0.1).timeout #just to give it time to play
+	animation_tree["parameters/conditions/is_respawning"] = false
+
+

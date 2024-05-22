@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bph5jdlw1qrdk"]
+
+[ext_resource type="Script" path="res://scripts/RockShooter.gd" id="1_el3yy"]
+[ext_resource type="Texture2D" uid="uid://bf4gic7s84jmv" path="res://assets/objects/rock thrower.png" id="2_ejb7h"]
+
+[node name="RockShooter" type="Node2D"]
+script = ExtResource("1_el3yy")
+
+[node name="RockContainer" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("2_ejb7h")
+
+[node name="ShotTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
