@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://daau31faugseu"]
+[gd_scene load_steps=19 format=3 uid="uid://daau31faugseu"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_buffk"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="2_1kwi2"]
@@ -9,6 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://cjnej0uf15jdf" path="res://assets/background/cloud.png" id="7_kbrut"]
 [ext_resource type="Texture2D" uid="uid://bnq26mbogmchh" path="res://assets/background/mountain.png" id="7_sjx4e"]
 [ext_resource type="Texture2D" uid="uid://cyucji7gcuer2" path="res://assets/background/sky.png" id="7_tx0uw"]
+[ext_resource type="Texture2D" uid="uid://cfeb8wfp5crd2" path="res://assets/props/Tree1.png" id="8_870yc"]
+[ext_resource type="Texture2D" uid="uid://medlkuki3njv" path="res://assets/props/Tree2.png" id="9_pvled"]
+[ext_resource type="Texture2D" uid="uid://b74c0hvtxoarj" path="res://assets/props/Tree3.png" id="10_fhsu8"]
+[ext_resource type="Texture2D" uid="uid://bc4dtdd6r73iw" path="res://assets/props/Tump3.png" id="11_iel88"]
+[ext_resource type="Texture2D" uid="uid://677eakpb8n2f" path="res://assets/props/Grass6.png" id="12_1bxge"]
+[ext_resource type="Texture2D" uid="uid://dhfsngq8hgrt5" path="res://assets/props/Grass3.png" id="13_letjv"]
+[ext_resource type="Texture2D" uid="uid://cl33dhgetxpj7" path="res://assets/props/Grass5.png" id="14_yv61y"]
+[ext_resource type="Texture2D" uid="uid://brkxjbcidl3wv" path="res://assets/props/Tump1.png" id="15_syddw"]
+[ext_resource type="Texture2D" uid="uid://cx8poeruu2uje" path="res://assets/props/Bush6.png" id="16_2i5mw"]
 
 [node name="Stage 1" type="Node2D"]
 script = ExtResource("1_buffk")
@@ -171,29 +180,89 @@ offset_right = 1247.0
 offset_bottom = 5.0
 texture = ExtResource("7_kbrut")
 
-[node name="Sky" type="TextureRect" parent="WORLD ASSETS"]
-offset_left = 1031.0
-offset_top = -2297.0
-offset_right = 3249.0
-offset_bottom = -1109.0
-scale = Vector2(-1, 1)
-texture = ExtResource("7_tx0uw")
+[node name="Trees" type="Node" parent="WORLD ASSETS"]
 
-[node name="BackgroundMountains" type="TextureRect" parent="WORLD ASSETS/Sky"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = 320.0
-offset_right = 2218.0
-offset_bottom = 1024.0
-texture = ExtResource("5_4jl6i")
+[node name="GreenTree_small" type="TextureRect" parent="WORLD ASSETS/Trees"]
+offset_left = -36.0
+offset_top = -113.0
+offset_right = 76.0
+offset_bottom = 47.0
+texture = ExtResource("8_870yc")
 
-[node name="Mountain" type="TextureRect" parent="WORLD ASSETS/Sky/BackgroundMountains"]
+[node name="GreenTree_Medium" type="TextureRect" parent="WORLD ASSETS/Trees"]
+offset_left = 604.0
+offset_top = -157.0
+offset_right = 716.0
+offset_bottom = 3.0
+texture = ExtResource("9_pvled")
+
+[node name="GreenTree_Large" type="TextureRect" parent="WORLD ASSETS/Trees"]
+offset_left = 1035.0
+offset_top = -80.0
+offset_right = 1147.0
+offset_bottom = 80.0
+texture = ExtResource("10_fhsu8")
+
+[node name="Grass_Bushes" type="Node" parent="WORLD ASSETS"]
+
+[node name="Tump" type="TextureRect" parent="WORLD ASSETS/Grass_Bushes"]
+offset_left = 452.0
+offset_top = -17.0
+offset_right = 532.0
+offset_bottom = 47.0
+texture = ExtResource("11_iel88")
+
+[node name="LargeGrass" type="TextureRect" parent="WORLD ASSETS/Grass_Bushes"]
+offset_left = -127.0
+offset_top = -16.0
+offset_right = -47.0
+offset_bottom = 48.0
+texture = ExtResource("12_1bxge")
+
+[node name="LargeGrass" type="TextureRect" parent="WORLD ASSETS/Grass_Bushes/LargeGrass"]
 layout_mode = 0
-offset_left = -1.0
-offset_top = -52.0
-offset_right = 2220.0
-offset_bottom = 873.0
-texture = ExtResource("7_sjx4e")
+offset_left = 1008.0
+offset_top = 34.0
+offset_right = 1088.0
+offset_bottom = 98.0
+texture = ExtResource("12_1bxge")
+
+[node name="MediumGrass" type="TextureRect" parent="WORLD ASSETS/Grass_Bushes"]
+offset_left = 198.0
+offset_top = -16.0
+offset_right = 278.0
+offset_bottom = 48.0
+texture = ExtResource("13_letjv")
+
+[node name="SmallGrass" type="TextureRect" parent="WORLD ASSETS/Grass_Bushes"]
+offset_left = 406.0
+offset_top = -16.0
+offset_right = 486.0
+offset_bottom = 48.0
+texture = ExtResource("14_yv61y")
+
+[node name="MediumGrass2" type="TextureRect" parent="WORLD ASSETS/Grass_Bushes"]
+offset_left = 926.0
+offset_top = -111.0
+offset_right = 1006.0
+offset_bottom = -47.0
+texture = ExtResource("13_letjv")
+
+[node name="Tump2" type="TextureRect" parent="WORLD ASSETS/Grass_Bushes"]
+offset_left = -221.0
+offset_top = -17.0
+offset_right = -141.0
+offset_bottom = 47.0
+texture = ExtResource("15_syddw")
+
+[node name="TextureRect" type="TextureRect" parent="WORLD ASSETS/Grass_Bushes"]
+offset_left = 1243.0
+offset_top = -173.0
+offset_right = 1323.0
+offset_bottom = -109.0
+texture = ExtResource("16_2i5mw")
+
+[node name="Rocks" type="Node" parent="WORLD ASSETS"]
 
 [node name="Label2" type="Label" parent="WORLD ASSETS"]
 offset_left = 864.0

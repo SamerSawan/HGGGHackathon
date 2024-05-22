@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_q86y3"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_nxu5i"]
-[ext_resource type="PackedScene" uid="uid://b50l3llagg0xq" path="res://scenes/entities/environment/cave_door.tscn" id="3_uq6pm"]
+[ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="3_uq6pm"]
 [ext_resource type="PackedScene" uid="uid://cvhp56nm1f2au" path="res://scenes/entities/environment/deathzone.tscn" id="4_3wwqs"]
 [ext_resource type="PackedScene" uid="uid://dj12yujggt4tq" path="res://scenes/Stages/stage_2.tscn" id="4_obwil"]
 
