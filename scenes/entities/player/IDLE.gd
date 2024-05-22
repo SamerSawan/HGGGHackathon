@@ -3,6 +3,7 @@ extends "state.gd"
 
 func update(delta):
 	Player.gravity(delta)
+	player_movement(delta)
 	if Player.movement_input.x != 0:
 		return STATES.MOVE
 	if Player.jump_input_actuation == true:
@@ -14,3 +15,4 @@ func update(delta):
 	return null
 func enter_state():
 	Player.can_dash = true
+	Player.climbs = 2

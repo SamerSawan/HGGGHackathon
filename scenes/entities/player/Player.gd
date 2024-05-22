@@ -90,12 +90,20 @@ func player_input():
 	horizontal_direction = Input.get_axis("MoveLeft", "MoveRight") #returns -1 if first arg is pressed, else 1
 	vertical_direction = Input.get_axis("MoveDown", "MoveUp")
 	movement_input = Vector2(horizontal_direction, vertical_direction)
+#	if Input.is_action_pressed("MoveRight"):
+#		movement_input.x += 1
+#	if Input.is_action_pressed("MoveLeft"):
+#		movement_input.x -= 1
+#	if Input.is_action_pressed("MoveUp"):
+#		movement_input.y -= 1
+#	if Input.is_action_pressed("MoveDown"):
+#		movement_input.y += 1
 	
 	# jumps
-	if Input.is_action_pressed("Jump"):
-		jump_input = true
-	else: 
-		jump_input = false
+#	if Input.is_action_pressed("Jump"): #not doing anything? doesnt change if commented out
+#		jump_input = true
+#	else: 
+#		jump_input = false
 	if Input.is_action_just_pressed("Jump"):
 		jump_input_actuation = true
 	else: 

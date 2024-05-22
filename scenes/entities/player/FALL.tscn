@@ -4,5 +4,3 @@
 
 [node name="FALL" type="Node"]
 script = ExtResource("1_1osr6")
-
-[node name="CoyoteTimer" type="Timer" parent="."]
