@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b50l3llagg0xq"]
+[gd_scene load_steps=4 format=3 uid="uid://bakn2a3wusqmm"]
 
 [ext_resource type="Texture2D" uid="uid://bi8mw7urcjjv3" path="res://assets/objects/cave entrance.png" id="1_50mji"]
 [ext_resource type="Script" path="res://scripts/cave_door.gd" id="1_qor6e"]
