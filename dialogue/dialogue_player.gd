@@ -20,6 +20,7 @@ func load_scene_text(): #almost everything here changed
 		file.open(scene_text_file, FileAccess.READ)
 		return JSON.parse_string(file.get_as_text()) #fixed
 
+
 func show_text():
 	text_label.text = selected_text.pop_front()
 

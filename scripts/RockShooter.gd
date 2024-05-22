@@ -1,6 +1,7 @@
 extends Node2D
 
 var rock_scene = preload("res://scenes/entities/environment/rock.tscn") #access specific saw to be shot
+var Player
 
 @onready var shot_timer = $ShotTimer
 @onready var Rock_container = $RockContainer
@@ -10,13 +11,18 @@ var rock_scene = preload("res://scenes/entities/environment/rock.tscn") #access 
 @export var Rock_speed_x: float = 70
 @export var Rock_speed_y: float = 70 #Rock speeds
 @export var shoot_on_start: bool = false
+
+var perception: float
 var direction_x: float
 var direction_y: float
 
 func _ready():
 	shot_timer.wait_time = shot_cooldown #adjustable shot cooldown
 	rotation_id() #get the rotation of the shooter
-	SignalBus.player_died.connect(reset)
+	SignalBus.player_died.connect(reset) 
+	SignalBus.perception_check.connect(perception_change)
+	Player = get_tree().get_first_node_in_group("player")
+	
 	if shoot_on_start:
 		shoot()
 	await get_tree().create_timer(first_shot_cooldown).timeout
@@ -38,6 +44,12 @@ func reset(): #for stages where i want Rocks to shoot off rip
 	if shoot_on_start:
 		shot_timer.start() #restart the shot timer so it doesnt double shoot
 		shoot()
+
+func perception_change():
+	perception = Player.perception
+	if perception > 0:
+		Rock_speed_x = Rock_speed_x/perception
+		Rock_speed_y = Rock_speed_y/perception
 
 func rotation_id(): #shoot the Rocks out correctly at 4 different angles
 	#i had to round the numbers down or it would be inconsistent

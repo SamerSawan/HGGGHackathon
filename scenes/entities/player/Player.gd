@@ -25,6 +25,9 @@ var climbs: int = 2
 
 #mechanic
 var can_dash = true
+var jump_buffer: bool = false
+var coyote_jump: bool = false
+var perception: float = 0
 
 #states
 var current_state = null
@@ -44,7 +47,11 @@ func _ready():
 	prev_state = STATES.IDLE 
 	current_state = STATES.IDLE
 	
-func _process(delta):
+	SignalBus.jump_buffer.connect(jump_buffer_func)
+	SignalBus.coyote_jump.connect(coyote_jump_func)
+#	SignalBus.perception_check.connect(perception_thresholds)
+	
+func _process(_delta):
 	animation_handler()
 	
 
@@ -90,21 +97,8 @@ func player_input():
 	horizontal_direction = Input.get_axis("MoveLeft", "MoveRight") #returns -1 if first arg is pressed, else 1
 	vertical_direction = Input.get_axis("MoveDown", "MoveUp")
 	movement_input = Vector2(horizontal_direction, vertical_direction)
-#	if Input.is_action_pressed("MoveRight"):
-#		movement_input.x += 1
-#	if Input.is_action_pressed("MoveLeft"):
-#		movement_input.x -= 1
-#	if Input.is_action_pressed("MoveUp"):
-#		movement_input.y -= 1
-#	if Input.is_action_pressed("MoveDown"):
-#		movement_input.y += 1
-	
-	# jumps
-#	if Input.is_action_pressed("Jump"): #not doing anything? doesnt change if commented out
-#		jump_input = true
-#	else: 
-#		jump_input = false
-	if Input.is_action_just_pressed("Jump"):
+
+	if Input.is_action_pressed("Jump"):
 		jump_input_actuation = true
 	else: 
 		jump_input_actuation = false
@@ -126,4 +120,28 @@ func respawn_anim():
 	await get_tree().create_timer(0.1).timeout #just to give it time to play
 	animation_tree["parameters/conditions/is_respawning"] = false
 
+func jump_buffer_func(): #catches signal from FALL state
+	$JumpBuffer.start()
+	jump_buffer = true
 
+func _on_jump_buffer_timeout():
+	jump_buffer = false
+
+func coyote_jump_func(): #couldnt find anywhere in states, putting it here
+	$CoyoteTimer.start()
+	coyote_jump = true
+		
+func _on_coyote_timer_timeout():
+	coyote_jump = false
+
+func perception_limits():
+	if perception > 100:
+		perception = 100
+	if perception <= 0:
+		perception = 1
+
+
+func _on_perception_timer_timeout():
+	SignalBus.perception_check.emit()
+	perception -= 3
+	

@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var dialogue_key = ""
+@export var on_contact: bool = false
 var area_active = false
 
 func _input(event):
@@ -9,6 +10,8 @@ func _input(event):
 
 
 func _on_Dialogue_area_entered(area):
+	if on_contact:
+		SignalBus.emit_signal("display_dialogue", dialogue_key)
 	area_active = true
 
 func _on_Dialogue_area_exited(area):
