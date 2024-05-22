@@ -11,9 +11,10 @@ process_mode = 3
 script = ExtResource("1_bx8nx")
 
 [node name="Background" type="NinePatchRect" parent="."]
-offset_top = 520.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 23.0
+offset_top = 656.0
+offset_right = 1415.0
+offset_bottom = 792.0
 texture = ExtResource("2_ivnan")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -21,9 +22,9 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="Text" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 528.0
-offset_right = 1144.0
-offset_bottom = 640.0
+offset_left = 36.0
+offset_top = 668.0
+offset_right = 1402.0
+offset_bottom = 780.0
 label_settings = SubResource("LabelSettings_vc4xm")
 autowrap_mode = 3

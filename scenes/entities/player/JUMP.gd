@@ -10,5 +10,7 @@ func update(delta):
 	if Player.get_next_to_wall() != null:
 		return STATES.SLIDE
 	return null
+	
 func enter_state():
+	Player.jump_buffer = false
 	Player.velocity.y = Player.JUMP_VELOCITY

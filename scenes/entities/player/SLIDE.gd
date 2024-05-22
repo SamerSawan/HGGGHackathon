@@ -8,7 +8,7 @@ func update(delta):
 	slide_movement(delta)
 	if Player.get_next_to_wall() == null:
 		return STATES.FALL
-	if Player.jump_input_actuation and Player.climbs > 0 and Input.is_action_pressed("MoveUp"): #allows jumping up walls
+	if Input.is_action_just_pressed("Jump") and Player.climbs > 0 and Input.is_action_pressed("MoveUp"): #allows jumping up walls
 		Player.climbs -= 1
 		return STATES.JUMP
 	if Player.is_on_floor():

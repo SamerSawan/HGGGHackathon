@@ -1,5 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dj12yujggt4tq"]
 
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_atend"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_hwitp"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_qr0d6"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="3_pyst0"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bxm62p7p84yfu" path="res://assets/props/Rock2.png" id="9_nlxrx"]
 
 [node name="Stage_2" type="Node2D"]
+script = ExtResource("1_atend")
 
 [node name="Player" parent="." instance=ExtResource("1_hwitp")]
 position = Vector2(88, -584)

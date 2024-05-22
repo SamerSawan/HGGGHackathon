@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=19 format=3 uid="uid://dmccon2ejmq8h"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_q86y3"]
@@ -19,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://brkxjbcidl3wv" path="res://assets/props/Tump1.png" id="12_p5s0s"]
 [ext_resource type="Texture2D" uid="uid://677eakpb8n2f" path="res://assets/props/Grass6.png" id="13_11rla"]
 
+
 [node name="DrK Chamber" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_q86y3")]
@@ -31,7 +33,7 @@ layer_0/tile_data = PackedInt32Array(196596, 589824, 0, 196597, 589825, 11, 1965
 
 [node name="CaveDoor" parent="." instance=ExtResource("3_uq6pm")]
 position = Vector2(224, 0)
-next_level = ExtResource("4_obwil")
+next_level = "res://scenes/Stages/stage_2.tscn"
 is_spawn_point = true
 
 [node name="Background" type="Node" parent="."]
@@ -176,4 +178,20 @@ texture = ExtResource("11_8scxa")
 [node name="DEATHZONE" parent="Background" instance=ExtResource("4_3wwqs")]
 position = Vector2(-520, 261)
 
+[node name="DrK" parent="." instance=ExtResource("5_wxwk8")]
+position = Vector2(0, -96)
+
+[node name="DialogueArea" parent="." instance=ExtResource("6_5mb7u")]
+position = Vector2(184, 0)
+dialogue_key = "door"
+on_contact = true
+
+[node name="CollisionShape2D" parent="DialogueArea" index="0"]
+position = Vector2(-32, -72)
+shape = SubResource("RectangleShape2D_pmvhu")
+
+[node name="DialoguePlayer" parent="." instance=ExtResource("7_nmvna")]
+scene_text_file = "res://dialogue/dialogueJSONs/world_dialogue.json"
+
 [editable path="Player"]
+[editable path="DialogueArea"]

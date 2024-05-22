@@ -7,7 +7,7 @@ var dashing = false
 @export var dash_duration = .2
 @onready var DashDuration_timer = $DashDuration
 
-func update(delta):
+func update(_delta):
 	if !dashing:
 		return STATES.FALL
 	return null
