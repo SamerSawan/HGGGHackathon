@@ -31,7 +31,7 @@ func slide_movement(delta):
 		else:
 			Player.velocity.y = 0
 	else:
-		player_movement(delta)
+		player_movement()
 		Player.gravity(delta)
 		
 		if Player.velocity.y > 0: #only 'slide' when going down, not up
