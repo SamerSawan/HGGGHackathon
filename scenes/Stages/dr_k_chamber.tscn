@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmccon2ejmq8h"]
+[gd_scene load_steps=11 format=3 uid="uid://dmccon2ejmq8h"]
 
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_q86y3"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_nxu5i"]
 [ext_resource type="PackedScene" uid="uid://bakn2a3wusqmm" path="res://scenes/entities/environment/cave_door.tscn" id="3_uq6pm"]
 [ext_resource type="PackedScene" uid="uid://cvhp56nm1f2au" path="res://scenes/entities/environment/deathzone.tscn" id="4_3wwqs"]
 [ext_resource type="PackedScene" uid="uid://dj12yujggt4tq" path="res://scenes/Stages/stage_2.tscn" id="4_obwil"]
+[ext_resource type="Texture2D" uid="uid://cj3u4q8juovjx" path="res://assets/props/OrangeTree3.png" id="6_5i1dj"]
+[ext_resource type="Texture2D" uid="uid://cfpw4qw3cnoto" path="res://assets/props/OrangeTree2.png" id="7_h3h7w"]
+[ext_resource type="Texture2D" uid="uid://twsdtekjfbjl" path="res://assets/props/OrangeTree1.png" id="8_fj05w"]
+[ext_resource type="Texture2D" uid="uid://buaam5almnam6" path="res://assets/props/OrangeBush5.png" id="9_vgruw"]
+[ext_resource type="Texture2D" uid="uid://dmic5l6fgd60n" path="res://assets/props/OrangeBush2.png" id="10_n8h08"]
 
 [node name="DrK Chamber" type="Node2D"]
 
@@ -21,16 +26,53 @@ position = Vector2(224, 0)
 next_level = ExtResource("4_obwil")
 is_spawn_point = true
 
-[node name="Label" type="Label" parent="."]
+[node name="DEATHZONE" parent="." instance=ExtResource("4_3wwqs")]
+position = Vector2(8, 248)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Tree1" type="TextureRect" parent="Node"]
+offset_left = -168.0
+offset_top = -143.0
+offset_right = -56.0
+offset_bottom = 17.0
+texture = ExtResource("6_5i1dj")
+
+[node name="Tree2" type="TextureRect" parent="Node"]
+offset_left = -103.0
+offset_top = -140.0
+offset_right = 9.0
+offset_bottom = 20.0
+texture = ExtResource("7_h3h7w")
+
+[node name="Label" type="Label" parent="Node"]
 offset_left = -136.0
 offset_top = -136.0
-offset_right = -96.0
-offset_bottom = -113.0
+offset_right = 127.0
+offset_bottom = -84.0
 text = "DR K pulls up and spits game here
 (outdoors)
 "
 
-[node name="DEATHZONE" parent="." instance=ExtResource("4_3wwqs")]
-position = Vector2(8, 248)
+[node name="Tree3" type="TextureRect" parent="Node"]
+offset_left = -231.0
+offset_top = -145.0
+offset_right = -119.0
+offset_bottom = 15.0
+texture = ExtResource("8_fj05w")
+
+[node name="OrangeBush1" type="TextureRect" parent="Node"]
+offset_left = -159.0
+offset_top = -47.0
+offset_right = -79.0
+offset_bottom = 17.0
+texture = ExtResource("9_vgruw")
+
+[node name="OrangeBush2" type="TextureRect" parent="Node"]
+offset_left = -121.0
+offset_top = -47.0
+offset_right = -41.0
+offset_bottom = 17.0
+texture = ExtResource("10_n8h08")
 
 [editable path="Player"]
