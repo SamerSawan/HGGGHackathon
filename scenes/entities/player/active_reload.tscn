@@ -18,7 +18,7 @@ layer = 2
 
 [node name="ActiveReload" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(720, 576)
+position = Vector2(608, 488)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_sqy3r")
 

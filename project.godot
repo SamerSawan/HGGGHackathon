@@ -24,6 +24,7 @@ AudioPlayer="*res://scenes/other/audio_player.tscn"
 
 window/size/window_width_override=1440
 window/size/window_height_override=810
+window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
 [input]

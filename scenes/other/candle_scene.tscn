@@ -77,9 +77,9 @@ animations = [{
 
 [node name="CandleSprite" type="AnimatedSprite2D" parent="." groups=["candle"]]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(574, 324)
-scale = Vector2(1.915, 2.15)
+position = Vector2(480, 248)
+scale = Vector2(1.60083, 1.70167)
 sprite_frames = SubResource("SpriteFrames_rqjt3")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.225502
+frame_progress = 0.613879
