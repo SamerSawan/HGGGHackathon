@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://dmccon2ejmq8h"]
+[gd_scene load_steps=23 format=3 uid="uid://dmccon2ejmq8h"]
 
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_f7st2"]
 [ext_resource type="PackedScene" uid="uid://pbgfphisbnva" path="res://scenes/entities/player/Player.tscn" id="1_q86y3"]
 [ext_resource type="PackedScene" uid="uid://bbatddp8o882r" path="res://scenes/tilemap/world_tile_map.tscn" id="2_nxu5i"]
 [ext_resource type="PackedScene" uid="uid://cvhp56nm1f2au" path="res://scenes/entities/environment/deathzone.tscn" id="4_3wwqs"]
@@ -25,6 +26,7 @@
 size = Vector2(29, 137.5)
 
 [node name="DrK Chamber" type="Node2D"]
+script = ExtResource("1_f7st2")
 
 [node name="Player" parent="." instance=ExtResource("1_q86y3")]
 

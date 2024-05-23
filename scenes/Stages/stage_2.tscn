@@ -70,20 +70,18 @@ scale = Vector2(3.76, 1)
 
 [node name="RockShooter" parent="." instance=ExtResource("5_3ehnr")]
 z_index = 1
-position = Vector2(192, -680)
+position = Vector2(448, -680)
 rotation = -3.14159
 first_shot_cooldown = 0.2
-shot_cooldown_initial = 2.0
-shoot_on_start = true
+shot_cooldown_initial = 1.5
 rock_speed_y = 500.0
 
 [node name="RockShooter2" parent="." instance=ExtResource("5_3ehnr")]
 z_index = 1
-position = Vector2(256, -680)
+position = Vector2(384, -680)
 rotation = -3.14159
 first_shot_cooldown = 0.4
-shot_cooldown_initial = 2.0
-shoot_on_start = true
+shot_cooldown_initial = 1.5
 rock_speed_y = 500.0
 
 [node name="RockShooter3" parent="." instance=ExtResource("5_3ehnr")]
@@ -91,26 +89,31 @@ z_index = 1
 position = Vector2(320, -680)
 rotation = -3.14159
 first_shot_cooldown = 0.6
-shot_cooldown_initial = 2.0
-shoot_on_start = true
+shot_cooldown_initial = 1.5
 rock_speed_y = 500.0
 
 [node name="RockShooter4" parent="." instance=ExtResource("5_3ehnr")]
 z_index = 1
-position = Vector2(384, -680)
+position = Vector2(192, -680)
 rotation = -3.14159
 first_shot_cooldown = 0.8
-shot_cooldown_initial = 2.0
-shoot_on_start = true
+shot_cooldown_initial = 1.5
 rock_speed_y = 500.0
 
 [node name="RockShooter5" parent="." instance=ExtResource("5_3ehnr")]
 z_index = 1
-position = Vector2(448, -680)
+position = Vector2(256, -680)
 rotation = -3.14159
 first_shot_cooldown = 1.0
-shot_cooldown_initial = 2.0
-shoot_on_start = true
+shot_cooldown_initial = 1.5
+rock_speed_y = 500.0
+
+[node name="RockShooter6" parent="." instance=ExtResource("5_3ehnr")]
+z_index = 1
+position = Vector2(512, -680)
+rotation = -3.14159
+first_shot_cooldown = 1.1
+shot_cooldown_initial = 1.5
 rock_speed_y = 500.0
 
 [node name="CaveDoor1" parent="." instance=ExtResource("10_ibhbs")]

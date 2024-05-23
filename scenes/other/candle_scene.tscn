@@ -82,4 +82,4 @@ scale = Vector2(1.915, 2.15)
 sprite_frames = SubResource("SpriteFrames_rqjt3")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.744008
+frame_progress = 0.225502

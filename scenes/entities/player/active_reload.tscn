@@ -13,46 +13,50 @@ height = 144.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdt4j"]
 size = Vector2(170, 64)
 
-[node name="ActiveReload" type="Node2D"]
+[node name="MeditationBar" type="CanvasLayer"]
+layer = 2
+
+[node name="ActiveReload" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(565, 280)
+position = Vector2(720, 576)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_sqy3r")
 
-[node name="Ovalbar" type="Sprite2D" parent="."]
+[node name="Ovalbar" type="Sprite2D" parent="ActiveReload"]
 texture = ExtResource("1_v4uum")
 
-[node name="Pin" type="Area2D" parent="."]
+[node name="Pin" type="Area2D" parent="ActiveReload"]
 z_index = 1
 position = Vector2(-424, 0)
 collision_layer = 32
 collision_mask = 32
 
-[node name="PinFaded" type="Sprite2D" parent="Pin"]
+[node name="PinFaded" type="Sprite2D" parent="ActiveReload/Pin"]
 texture = ExtResource("3_b3jnn")
 
-[node name="PinSprite" type="Sprite2D" parent="Pin"]
+[node name="PinSprite" type="Sprite2D" parent="ActiveReload/Pin"]
 texture = ExtResource("2_wgjwj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pin"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveReload/Pin"]
 shape = SubResource("CapsuleShape2D_8jsfn")
 
-[node name="OuterSweetSpot" type="Area2D" parent="." groups=["Outer"]]
+[node name="OuterSweetSpot" type="Area2D" parent="ActiveReload" groups=["Outer"]]
 position = Vector2(301, 0)
 scale = Vector2(0.6, 1)
 collision_layer = 32
 collision_mask = 32
 
-[node name="Sprite2D" type="Sprite2D" parent="OuterSweetSpot"]
+[node name="Sprite2D" type="Sprite2D" parent="ActiveReload/OuterSweetSpot"]
 texture = ExtResource("3_ayth1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OuterSweetSpot"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveReload/OuterSweetSpot"]
 shape = SubResource("RectangleShape2D_sdt4j")
 
-[node name="PinStart" type="Marker2D" parent="."]
+[node name="PinStart" type="Marker2D" parent="ActiveReload"]
 position = Vector2(-421, 0)
 
-[node name="PinEnd" type="Marker2D" parent="."]
+[node name="PinEnd" type="Marker2D" parent="ActiveReload"]
 position = Vector2(459, 0)
 
-[connection signal="area_entered" from="Pin" to="." method="_on_pin_area_entered"]
-[connection signal="area_exited" from="Pin" to="." method="_on_pin_area_exited"]
+[connection signal="area_entered" from="ActiveReload/Pin" to="ActiveReload" method="_on_pin_area_entered"]
+[connection signal="area_exited" from="ActiveReload/Pin" to="ActiveReload" method="_on_pin_area_exited"]

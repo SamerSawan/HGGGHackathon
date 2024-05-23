@@ -44,7 +44,8 @@ func _call_pin(reload_time, delta): #aka pin activation via R key
 			sprite_2d.modulate = Color(0, 1, 0)
 			$Pin/PinSprite.visible = false
 			Player.perception += 1
-#			SignalBus.perception_check.emit()
+			reset_2()
+			
 		elif !pin_outer_hit && !passed_outer_area && transparency > 1: #'too early'
 			stop_pin = false
 			$Pin/PinSprite.visible = false
@@ -59,8 +60,14 @@ func _call_pin(reload_time, delta): #aka pin activation via R key
 func reset_interface():
 	if Input.is_action_just_pressed("MeditateMenu"):
 		stop_pin = false
-		passed_outer_area = false #timer
+		passed_outer_area = false
 		fading = !fading
+
+func reset_2(): #yeah, it was THAT good
+	if Player.perception >= 5:
+		stop_pin = false
+		passed_outer_area = false
+		fading = true
 		
 func menu_fade(): #control how fast the menu will appear/disappear, activated with Q
 	if fading and transparency > 0:

@@ -10,4 +10,4 @@ func _ready():
 	
 func _process(delta):
 	self.modulate = Color(1,1,1,transparency)
-	transparency = 4/(Player.perception)
+	transparency = 3.3/(Player.perception)

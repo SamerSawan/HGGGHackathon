@@ -170,13 +170,6 @@ script = ExtResource("3_tsau4")
 
 [node name="SLIDE" parent="STATES" instance=ExtResource("9_8c52p")]
 
-[node name="Label" type="Label" parent="."]
-offset_left = -23.0
-offset_top = -45.0
-offset_right = 24.0
-offset_bottom = -19.0
-text = "STATE"
-
 [node name="Raycasts" type="Node2D" parent="."]
 
 [node name="TopRight" type="RayCast2D" parent="Raycasts"]
@@ -234,8 +227,6 @@ parameters/conditions/is_respawning = false
 parameters/conditions/is_running = false
 
 [node name="ActiveReload" parent="." instance=ExtResource("10_g5lh4")]
-position = Vector2(-5.96046e-08, -23)
-scale = Vector2(0.1, 0.1)
 
 [node name="PerceptionTimer" type="Timer" parent="."]
 autostart = true
@@ -243,6 +234,15 @@ autostart = true
 [node name="CanvasLayer" parent="." instance=ExtResource("11_0d7tt")]
 scale = Vector2(1.4, 1.4)
 transform = Transform2D(1.4, 0, 0, 1.4, 0, 0)
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+amount = 25
+lifetime = 0.13
+local_coords = true
+emission_shape = 2
+emission_sphere_radius = 22.15
+gravity = Vector2(0, -980)
+color = Color(0.905882, 0, 0.905882, 1)
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var standy_sprite = $Sprite2D
 @onready var anim_player = $AnimationPlayer
+@onready var particles = $Particles
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -28,7 +29,7 @@ var can_dash = true
 var jump_buffer: bool = false
 var coyote_jump: bool = false
 var perception: float = 1
-
+var transparency: float
 #states
 var current_state = null
 var prev_state = null
@@ -49,9 +50,9 @@ func _ready():
 	
 	SignalBus.jump_buffer.connect(jump_buffer_func)
 	SignalBus.coyote_jump.connect(coyote_jump_func)
-#	SignalBus.perception_check.connect(perception_thresholds)
 	
 func _process(_delta):
+	particles_show()
 	animation_handler()
 	
 
@@ -60,7 +61,7 @@ func _physics_process(delta):
 		player_input()
 	change_state(current_state.update(delta))
 	
-	$Label.text = str(current_state.get_name())
+#	$Label.text = str(current_state.get_name())
 	move_and_slide()
 
 func gravity(delta):
@@ -149,4 +150,11 @@ func _on_perception_timer_timeout():
 	perception -= 0.2 #decrease per tick (seconds)
 	perception_limits()
 	SignalBus.perception_check.emit()
-	
+
+func particles_show():
+	particles.modulate = Color(1,1,1,transparency)
+	if perception > 2:
+		particles.visible = true
+		transparency = (0.21*perception - 0.2)
+	else:
+		particles.visible = false
