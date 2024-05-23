@@ -37,8 +37,8 @@ func _call_pin(reload_time, delta): #aka pin activation via R key
 	if Input.is_action_just_pressed("Meditate"):
 		if pin_outer_hit && $Pin/PinSprite.visible:
 			$Pin/PinSprite.visible = false
-			Player.perception += 20
-			SignalBus.perception_check.emit()
+			Player.perception += 1
+#			SignalBus.perception_check.emit()
 		elif !pin_outer_hit && !passed_outer_area && transparency > 1: #'too early'
 			stop_pin = false
 			$Pin/PinSprite.visible = false

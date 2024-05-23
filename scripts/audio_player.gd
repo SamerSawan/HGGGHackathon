@@ -4,6 +4,7 @@ extends Node
 
 #var hurt = preload("res://martian_mike_assets/martian_mike_assets/audio/hurt.wav") keeping as example
 
+var cave_id: int = 0
 #MAY2024 THE PAUSE MENU BUTTONS ARE BEING MANAGED/CONNECTED FROM HERE AS WELL
 var musicToggle: bool = true
 var level_changed: bool = false #starts false or it will stay false

@@ -14,7 +14,7 @@ var jump_input = false
 var jump_input_actuation = false
 var climb_input = false
 var dash_input = false
-
+var inputs_active: bool = true
 
 #player movement
 const SPEED = 250.0
@@ -27,7 +27,7 @@ var climbs: int = 2
 var can_dash = true
 var jump_buffer: bool = false
 var coyote_jump: bool = false
-var perception: float = 0
+var perception: float = 1
 
 #states
 var current_state = null
@@ -56,7 +56,8 @@ func _process(_delta):
 	
 
 func _physics_process(delta):
-	player_input()
+	if inputs_active:
+		player_input()
 	change_state(current_state.update(delta))
 	
 	$Label.text = str(current_state.get_name())
@@ -115,9 +116,12 @@ func player_input():
 	else: 
 		dash_input = false
 	
-func respawn_anim():
+func respawn_anim(): #CONNECTED TO CAVE DOOR
 	animation_tree["parameters/conditions/is_respawning"] = true
-	await get_tree().create_timer(0.1).timeout #just to give it time to play
+	velocity = Vector2.ZERO
+	inputs_active = false
+	await get_tree().create_timer(0.5).timeout #just to give it time to play
+	inputs_active = true
 	animation_tree["parameters/conditions/is_respawning"] = false
 
 func jump_buffer_func(): #catches signal from FALL state
@@ -135,13 +139,14 @@ func _on_coyote_timer_timeout():
 	coyote_jump = false
 
 func perception_limits():
-	if perception > 100:
-		perception = 100
-	if perception <= 0:
+	if perception > 5:
+		perception = 5
+	if perception <= 1:
 		perception = 1
 
 
 func _on_perception_timer_timeout():
+	perception -= 0.2 #decrease per tick (seconds)
+	perception_limits()
 	SignalBus.perception_check.emit()
-	perception -= 3
 	

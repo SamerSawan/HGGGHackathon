@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0pio"]
 size = Vector2(16, 24)
 
-[node name="CaveDoor" type="Node2D"]
+[node name="CaveDoor" type="Node2D" groups=["doors"]]
 script = ExtResource("1_qor6e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

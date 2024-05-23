@@ -7,26 +7,29 @@ var Player
 @onready var Rock_container = $RockContainer
 
 @export var first_shot_cooldown: float = 0
-@export var shot_cooldown: float = 2
-@export var Rock_speed_x: float = 70
-@export var Rock_speed_y: float = 70 #Rock speeds
+@export var shot_cooldown_initial: float = 1
 @export var shoot_on_start: bool = false
+@export var rock_speed_x: float = 100 #INITIAL rock speeds
+@export var rock_speed_y: float = 100
 
+var shot_cooldown: float = shot_cooldown_initial
 var perception: float
 var direction_x: float
 var direction_y: float
+var Rock_speed_x: float = 70
+var Rock_speed_y: float = 70 #Rock speeds
 
 func _ready():
-	shot_timer.wait_time = shot_cooldown #adjustable shot cooldown
+	shot_timer.wait_time = shot_cooldown_initial #adjustable shot cooldown
 	rotation_id() #get the rotation of the shooter
 	SignalBus.player_died.connect(reset) 
-	SignalBus.perception_check.connect(perception_change)
+	SignalBus.perception_check.connect(perception_change) #triggered every second from player
 	Player = get_tree().get_first_node_in_group("player")
 	
 	if shoot_on_start:
 		shoot()
 	await get_tree().create_timer(first_shot_cooldown).timeout
-	shot_timer.start(shot_cooldown) #or else the first timer countdown will start at 2 seconds
+	shot_timer.start(shot_cooldown_initial) #or else the first timer countdown will start at 2 seconds
 	
 	
 func shoot():
@@ -39,6 +42,7 @@ func shoot():
 	
 func _on_shot_timer_timeout():
 	shoot()
+	shot_timer.start(shot_cooldown)
 
 func reset(): #for stages where i want Rocks to shoot off rip
 	if shoot_on_start:
@@ -46,11 +50,14 @@ func reset(): #for stages where i want Rocks to shoot off rip
 		shoot()
 
 func perception_change():
-	perception = Player.perception
-	if perception > 0:
-		Rock_speed_x = Rock_speed_x/perception
-		Rock_speed_y = Rock_speed_y/perception
-
+	if Player.perception > 0: #stop it from going negative and/or crashing somehow
+		perception = Player.perception #from 1 to 5
+		Rock_speed_x = rock_speed_x*(1.0/perception)
+		Rock_speed_y = rock_speed_y*(1.0/perception)
+		shot_cooldown = shot_cooldown_initial/(2.5/perception)
+	print(perception)
+	print("COOLDOWN = " + str(shot_cooldown))
+	
 func rotation_id(): #shoot the Rocks out correctly at 4 different angles
 	#i had to round the numbers down or it would be inconsistent
 	if abs(int(fmod(rotation, deg_to_rad(360)))) == 0: #x = 0, Y = 1
