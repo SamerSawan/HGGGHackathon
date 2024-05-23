@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjudjxj8wogcp"]
+
+[ext_resource type="Texture2D" uid="uid://c1u1mkhblgnm1" path="res://assets/ui/candle.png" id="1_oxnt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gatuu"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(0, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0h8q"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(600, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yiqn"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(1200, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw5m3"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(1800, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6byiu"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(2400, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47aeg"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(3000, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcec1"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(3600, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qq1l"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(4200, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdiue"]
+atlas = ExtResource("1_oxnt2")
+region = Rect2(4800, 0, 600, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqjt3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gatuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0h8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yiqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw5m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6byiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47aeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcec1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qq1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdiue")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Candle" type="CanvasLayer"]
+
+[node name="CandleSprite" type="AnimatedSprite2D" parent="." groups=["candle"]]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(574, 324)
+scale = Vector2(1.915, 2.15)
+sprite_frames = SubResource("SpriteFrames_rqjt3")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.744008

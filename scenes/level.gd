@@ -5,8 +5,8 @@ extends Node2D
 var Player
 func _ready():
 	Player = get_tree().get_first_node_in_group("player")
-	respawn()
-#	Player.global_position = get_node('CaveDoor' + str(AudioPlayer.cave_id)).global_position
+#	respawn()
+	Player.global_position = get_node('CaveDoor' + str(AudioPlayer.cave_id)).global_position
 	SignalBus.deathzone.connect(respawn)
 
 func respawn():

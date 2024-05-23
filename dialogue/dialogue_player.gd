@@ -8,9 +8,11 @@ var in_progress = false
 
 @onready var background = $Background
 @onready var text_label = $Text
+@onready var dr_k = $"Dr K"
 
 func _ready():
 	background.visible = false
+	dr_k.visible = false
 	scene_text = load_scene_text()
 	SignalBus.display_dialogue.connect(on_display_dialogue) #changed
 
@@ -33,6 +35,7 @@ func next_line():
 func finish():
 	text_label.text = ""
 	background.visible = false
+	dr_k.visible = false
 	in_progress = false
 	get_tree().paused = false
 
@@ -42,6 +45,7 @@ func on_display_dialogue(text_key):
 	else:
 		get_tree().paused = true
 		background.visible = true
+		dr_k.visible = true
 		in_progress = true
 		selected_text = scene_text[text_key].duplicate()
 		show_text()

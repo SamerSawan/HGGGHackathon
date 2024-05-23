@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://pbgfphisbnva"]
+[gd_scene load_steps=29 format=3 uid="uid://pbgfphisbnva"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_5jc4u"]
 [ext_resource type="Texture2D" uid="uid://xnlxds47dtbt" path="res://assets/player/standy mega sheet may 21.png" id="2_hg4lv"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c87ieq1e0rmdv" path="res://scenes/entities/player/DASH.tscn" id="8_r8y6p"]
 [ext_resource type="PackedScene" uid="uid://db2qsmecwrg3x" path="res://scenes/entities/player/SLIDE.tscn" id="9_8c52p"]
 [ext_resource type="PackedScene" uid="uid://bciknmky3hp53" path="res://scenes/entities/player/active_reload.tscn" id="10_g5lh4"]
+[ext_resource type="PackedScene" uid="uid://bjudjxj8wogcp" path="res://scenes/other/candle_scene.tscn" id="11_0d7tt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyyt"]
 size = Vector2(16, 30)
@@ -238,6 +239,10 @@ scale = Vector2(0.1, 0.1)
 
 [node name="PerceptionTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("11_0d7tt")]
+scale = Vector2(1.4, 1.4)
+transform = Transform2D(1.4, 0, 0, 1.4, 0, 0)
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

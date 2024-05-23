@@ -5,11 +5,14 @@
 extends Node2D
 
 var Player
+var candle
+#var candle = preload("res://scenes/other/candle_scene.tscn")
 
 @onready var pin := get_node("Pin")
 @onready var pin_start := get_node("PinStart")
 @onready var pin_end := get_node("PinEnd")
-
+@onready var sprite_2d = $OuterSweetSpot/Sprite2D
+var original_color
 var transparency: float = 0
 var fading: bool = true
 
@@ -22,6 +25,8 @@ var pin_outer_hit := false
 
 func _ready():
 	Player = get_tree().get_first_node_in_group("player")
+	candle = get_tree().get_first_node_in_group("candle")
+	original_color = sprite_2d.modulate
 	pin.transform.origin = pin_start.transform.origin #just in case
 
 func _process(_delta):
@@ -36,6 +41,7 @@ func _physics_process(delta): # Updating with physics because it was less consis
 func _call_pin(reload_time, delta): #aka pin activation via R key
 	if Input.is_action_just_pressed("Meditate"):
 		if pin_outer_hit && $Pin/PinSprite.visible:
+			sprite_2d.modulate = Color(0, 1, 0)
 			$Pin/PinSprite.visible = false
 			Player.perception += 1
 #			SignalBus.perception_check.emit()
@@ -60,13 +66,14 @@ func menu_fade(): #control how fast the menu will appear/disappear, activated wi
 	if fading and transparency > 0:
 		transparency -= 0.03
 		self.modulate = Color(1,1,1, transparency)
-
+		candle.modulate = Color(1,1,1, transparency)
 	if !fading and transparency < 1:
 		$Pin/PinSprite.visible = true
 		pin.transform.origin = pin_start.transform.origin #even pauses until fully visible for some reason
 		transparency += 0.03
 		self.modulate = Color(1,1,1, transparency)
-
+		candle.modulate = Color(1,1,1, transparency)
+		
 # ===== SIGNALS =====
 func _on_pin_area_entered(area): #pin entered
 	if area.is_in_group("Outer"):
@@ -74,6 +81,7 @@ func _on_pin_area_entered(area): #pin entered
 
 func _on_pin_area_exited(area): #pin passed
 	if area.is_in_group("Outer"):
+		sprite_2d.modulate = original_color
 		pin_outer_hit = false
 		passed_outer_area = true
 
