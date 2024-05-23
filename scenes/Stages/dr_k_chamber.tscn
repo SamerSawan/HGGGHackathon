@@ -165,7 +165,6 @@ texture = ExtResource("11_8scxa")
 position = Vector2(-520, 261)
 
 [node name="CaveDoor2" parent="." instance=ExtResource("17_gbeaw")]
-z_index = 1
 position = Vector2(224, 0)
 next_level = "res://scenes/Stages/stage_2.tscn"
 cave_id = 2

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://1pgk4a03vpd1"]
+
+[ext_resource type="Texture2D" uid="uid://cjnej0uf15jdf" path="res://assets/background/cloud.png" id="1_alw6q"]
+[ext_resource type="Script" path="res://scripts/clouds.gd" id="1_xutir"]
+
+[node name="clouds" type="Node2D"]
+script = ExtResource("1_xutir")
+
+[node name="Clouds" type="TextureRect" parent="."]
+offset_right = 684.0
+offset_bottom = 168.0
+texture = ExtResource("1_alw6q")

@@ -55,8 +55,6 @@ func perception_change():
 		Rock_speed_x = rock_speed_x*(1.0/perception)
 		Rock_speed_y = rock_speed_y*(1.0/perception)
 		shot_cooldown = shot_cooldown_initial/(2.5/perception)
-	print(perception)
-	print("COOLDOWN = " + str(shot_cooldown))
 	
 func rotation_id(): #shoot the Rocks out correctly at 4 different angles
 	#i had to round the numbers down or it would be inconsistent

@@ -33,7 +33,6 @@ position = Vector2(-208, 32)
 cave_id = 0
 
 [node name="CaveDoor1" parent="." instance=ExtResource("3_2m353")]
-z_index = 1
 position = Vector2(1376, -128)
 next_level = "res://scenes/Stages/stage_2.tscn"
 
